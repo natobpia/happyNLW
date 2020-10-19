@@ -6,6 +6,9 @@ const pages = require('./pages.js')
 // Starting express
 const server = express()
 
+// To use body request
+server.use(express.urlencoded({ extended: true}))
+
 // Using static archives
 server.use(express.static('public'))
 
@@ -18,6 +21,7 @@ server.get('/', pages.index)
 server.get('/orphanage', pages.orphanage)
 server.get('/orphanages', pages.orphanages)
 server.get('/create-orphanage', pages.createOrphanage)
+server.post('/save-orphanage', pages.saveOrphanage)
 
 // Por causa do HBS não se usa mais esta forma
 //server.get('/', (request, response) => {
